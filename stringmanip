@@ -1,0 +1,17 @@
+org=$1
+rev=""
+#get length of string 
+len=`expr $1 : '.*'`
+while [ $len -gt 0 ]
+do
+  #extract first char & save to left
+  left=`expr $org : '\(.\).*'`
+  #everything but the first character
+  org=`expr $org : '.\(.\).*'`
+  #append rev to left
+  rev=$left$rev
+  #decrement length
+  len=`expr $len - 1`
+done
+echo $rev
+exit 0
