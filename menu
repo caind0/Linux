@@ -1,0 +1,55 @@
+if [ "$#" -eq 3 ]
+then
+firstName=$1
+fileName=$3
+search=$2
+if [ "$search" = "s" ]
+then
+match=$(grep "$firstName" $fileName | wc -l)
+else
+echo "Please use s"
+fi
+if [ "$match" -ge 1 ]
+then
+   echo "Found in Database!"
+else
+   echo "This is not working"
+fi
+else
+
+tput clear
+tput cup 6 10
+echo 1- Enter Information
+tput cup 8 10
+echo 2- Search by Last Name
+tput cup 10 10
+echo 3- Search by First Name
+tput cup 12 10
+echo 4- Search by part of last name
+tput cup 14 10
+echo 5- Display all phone numbers
+tput cup 16 10
+echo 6- Get the email
+tput cup 18 10
+echo 7- Change phone number
+tput cup 20 10
+echo 8- Exit
+#tput cup 22 10
+#echo 9- Script with two parameters
+#tput cup 24 10
+#echo 0- "Run script 0 to search using 'Name' (s) 'filename'"
+echo -n Please enter the choice:; read choice
+case "$choice" in 
+	"1") ./1;;
+	"2") ./2;;
+	"3") ./3;;
+	"4") ./4;;
+	"5") ./5;;
+	"6") ./6;;
+	"7") ./7;;
+	"8") echo "Thank you for using our program"; exit;;
+	#"9") ./9;;
+	#"0") ./00;;
+	* ) echo "Error please choose another selection!"; sleep 2; ./menu;;
+esac
+fi 
