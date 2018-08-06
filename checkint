@@ -1,0 +1,11 @@
+for x in $*
+do
+expr $1 + 1 > /dev/null
+if [ $? -ne 0 ]
+   then
+      echo "The argument must be numeric"
+      exit 1
+   fi
+echo $1
+shift
+done
