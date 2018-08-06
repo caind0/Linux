@@ -1,0 +1,6 @@
+if [ "$#" -ne 2 ]
+then
+echo "Usage:encryption from(filename) to(filename)"
+exit 1
+fi
+tr 'a-m n-z 0-4 5-9' 'n-z a-m 5-9 0-4' < $1 > $2 
