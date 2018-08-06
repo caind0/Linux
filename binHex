@@ -1,0 +1,47 @@
+if [ $# -ne 2 ]
+then
+echo "Usage: Binary num"
+exit 1
+fi
+
+
+num=$2
+binary=""
+if [ "$1" == "b" ]
+then
+while [ $num -ne 0 ]
+do
+temp=`expr $num % 2`
+binary=$temp$binary
+num=`expr $num / 2`
+done
+echo "$1 in binary form is $binary"
+exit 0
+
+elif [ "$1" == "h" ]
+then
+hex=""
+while [ $num -ne 0 ]
+do
+temp=`expr $num % 16`
+if [ $temp -le 9 ] && [ $temp -ge 0 ]
+then
+let hexChar=temp
+else
+let hexChar=temp-10
+case $hexChar in
+   0) hexChar=A;;
+   1) hexChar=B;;
+   2) hexChar=C;;
+   3) hexChar=D;;
+   4) hexChar=E;;
+   5) hexChar=F;;
+esac
+fi
+hex=$hexChar$hex
+num=`expr $num / 16`
+done
+fi
+echo "$2 in hex form is 0x$hex"
+exit 0 
+
