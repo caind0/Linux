@@ -1,0 +1,14 @@
+loop=1
+while [ "$loop" -ge 0 ]
+  do 
+  echo -n Enter Number:
+  read number
+  let remainder = number % 2
+    if[ "$number" -eq 0 ]then 
+    exit
+    elif [ "$remainder" -eq 0 ] then
+    echo $number >> even
+    else
+    echo $number >> odd
+    fi
+done
