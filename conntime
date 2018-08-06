@@ -1,0 +1,8 @@
+loginTime=$(who | awk '/console/ {print $5}'|tr ':' '.')
+currTime=$(date | cut -c12-16|tr ':' '.')
+loginDay=$(who | awk '/console/ {print $4}')
+currDay=$(date | cut -d ' ' -f3)
+time=$(bc <<< "($currDay-$loginDay)*24 + $currTime - $loginTime")
+minTime=$(bc <<< "$time*60")
+echo "$time hours or $minTime minutes"
+
