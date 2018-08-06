@@ -1,0 +1,14 @@
+for x in $*
+do
+expr $1 + 1 > /dev/null
+if [ $? -ne 0  ]
+then
+echo "arg must be numeric"
+exit 1
+else
+let sum=$1+sum
+fi
+echo $1
+shift
+done
+echo $sum
